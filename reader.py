@@ -10,9 +10,6 @@ from langchain.vectorstores import FAISS
 import os 
 os.environ["OPENAI_API_KEY"]="Your API Key"
 
-import os 
-os.environ["OPENAI_API_KEY"]="Your API Key"
-
 from typing_extensions import Concatenate
 
 # read text from pdf
@@ -22,7 +19,7 @@ for i, page in enumerate(pdfreader.pages):
     if content:
         raw_text+=content
 
-# we need to split the text using charcter text split such that it should not increase the size token
+# We need to split the text using character text split such that it should not increase the size token.
 text_splitter=CharacterTextSplitter(
     separator='\n',
     chunk_size=800,
@@ -35,6 +32,7 @@ texts=text_splitter.split_text(raw_text)
 # download embaddings from OpenAI
 embeddings=OpenAIEmbeddings()
 
+#FAISS is like a database, stores vector embeddings in the vector database.
 document_search=FAISS.from_texts(texts, embeddings)
 
 from langchain.chains.question_answering import load_qa_chain
