@@ -34,6 +34,9 @@ texts=text_splitter.split_text(raw_text)
 # Embeddings- OpenAI’s text embeddings measure the relatedness of text strings.
 embeddings=OpenAIEmbeddings()
 
+# FAISS Facebook AI Similarity Search (Faiss) is a library for efficient similarity search and clustering of dense vectors. 
+# It contains algorithms that search in sets of vectors of any size, up to ones that possibly do not fit in RAM. 
+# It also contains supporting code for evaluation and parameter tuning.
 document_search=FAISS.from_texts(texts, embeddings)
 
 from langchain.chains.question_answering import load_qa_chain
