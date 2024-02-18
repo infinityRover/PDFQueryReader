@@ -30,7 +30,8 @@ text_splitter=CharacterTextSplitter(
 texts=text_splitter.split_text(raw_text)
 
 
-# download embaddings from OpenAI
+# download embeddings from OpenAI
+# Embeddings- OpenAI’s text embeddings measure the relatedness of text strings.
 embeddings=OpenAIEmbeddings()
 
 document_search=FAISS.from_texts(texts, embeddings)
